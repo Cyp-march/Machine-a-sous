@@ -1,6 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
-public class Main {
+public class machine {
     public static String luckyShot(int n) {
         int [] lucky = new int[3];
 
@@ -14,7 +14,12 @@ public class Main {
             for (int j = 0; j < roule.length; j++) {
                 roule[j] = random.nextInt(3)+1;
             }
-            String rouli = "["+roule[0]+","+roule[1]+","+roule[2]+"]";
+
+
+
+
+
+            String rouli = "      #####      \n/#####  $  #####\\ \n||             ||  \n|| ########### || \n|| |"+roule[0]+"| |"+roule[1]+"| |"+roule[2]+"| || \n|| ########### || \n||             || \n||#############||";
             try {
                 Thread.sleep(500);
                 System.out.println(rouli);
@@ -41,11 +46,13 @@ public class Main {
                 count++;
             }
         }
-        System.out.println(result);
+        String final_roll = "      #####      \n/#####  $  #####\\ \n||             ||  \n|| ########### || \n|| |"+lucky[0]+"| |"+lucky[1]+"| |"+lucky[2]+"| || \n|| ########### || \n||             || \n||#############||";
+
+        System.out.println(final_roll);
         if (count == 3){
-            return "Bravo vous avez gagnez "+Integer.toString(n*15)+" $. Avec ces nombres "+result;
+            return "Bravo vous avez gagnez "+Integer.toString(n*15)+"$";
         }
-        return "Womp vous avez perdu "+Integer.toString(n)+" $. Avec ces nombres "+result;
+        return "Womp vous avez perdu "+Integer.toString(n)+" $";
     }
 
 
@@ -82,7 +89,10 @@ public class Main {
                 Scanner sc2 = new Scanner(System.in);
                 System.out.print("Encore ? Votre solde est " + Integer.toString(solde) + " (Y/N) : ");  // ask the input from user
                 try {
-                    var = sc2.nextLine();
+                    var = sc2.nextLine().trim();
+                    if (!var.equalsIgnoreCase("Y") && !var.equalsIgnoreCase("N")) {
+                        System.out.println("Veuillez mettre y ou n");
+                    }
                 } catch (Exception e) {
                     System.out.println("Veuillez mettre y ou n");
                 }
